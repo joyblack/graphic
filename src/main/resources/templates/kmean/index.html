@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="common/module">
+<div th:fragment="module-header">
+    <h1>kmeans</h1>
+    <p>K-Means ALGORITHM</p>
+</div>
+<div th:fragment="module-content">
+        <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script th:src="@{/echart/echarts.min.js}"></script>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        // 指定图表的配置项和数据
+        option = {
+            containLabel: true,
+            xAxis: {
+                scale: true
+            },
+            yAxis: {
+                scale: true
+            },
+            series: [{
+                type: 'effectScatter',
+                symbolSize: 15,
+                data: [
+                    [1, 1.5],
+                    [1.67, 5.0],
+                    [3.0,102.0]
+                ]
+            }, {
+                symbolSize: 10,
+                type: 'scatter',
+                data: [[1.0,2.0]
+                    [1.0,3.0],
+                    [1.1,3.0],
+                    [1.0,3.5],
+                    [2.0,5.0],
+                    [2.0,3.0],
+                    [2.0,7.0],
+                    [2.0,8.0],
+                    [3.0,100.0],
+                    [3.0,101.0],
+                    [3.0,102.0],
+                    [3.0,103.0],
+                    [3.0,104.0]
+                ],
+            }]
+        };
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</div>
+
+</html>
